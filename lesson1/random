@@ -1,0 +1,56 @@
+import pgzrun
+from pgzero.builtins import *
+import pgzero.screen
+import random
+screen: pgzero.screen.Screen
+
+
+WIDTH = 700
+HEIGHT = 550
+score = 0
+passage = ""
+cookie = Actor('sonic')
+
+def draw():
+    screen.blit("brick", (0,0))
+    cookie.draw()
+    screen.draw.text(passage,color="orange",center = (400,50))
+    screen.draw.text(f"score:{score}",color="blue",center = (100,50))
+def on_mouse_down(pos):
+    global passage,score
+    if cookie.collidepoint(pos):
+        score+=1
+        passage = ("AWESOME")
+        cookie.pos = (random.randint(20,480),(random.randint(20,480)))
+        if score>3:
+            screen.clear
+            passage = "great"
+        if score>5:
+            screen.clear
+            passage = "brilliant"
+        if score>10:
+            screen.clear
+            passage = "exellent"
+        if score>15:
+            screen.clear
+            passage = "you are a pro"
+        if score>25:
+            screen.clear
+            passage = "MASTER"
+
+    else:
+        score -=1
+        if score<0:
+            screen.clear
+            passage = "seriously"
+        if score<-2:
+            screen.clear
+            passage = "this is not YOUR cup of tea"
+        if score<-5:
+            screen.clear
+            passage = "!GAMEOVER!!?"
+
+
+def update():
+    pass
+pgzrun.go()
