@@ -7,30 +7,51 @@ screen:pgzero.screen.Screen
 WIDTH = 700
 HEIGHT = 600
 
-level = 2
-total_items = level*2
+level = 1
+
 
 items=["bagimg","batteryimg","bottleimg","chipsimg","paperimg",]
 main_item = "purple-star"
 selected_items = []
-
-
+selected_items_string = []
+animations = []
 def setup():
-    main_actor= Actor(main_item)
-    selected_items.append(main_actor)
+    total_items = level*2
+    selected_items.clear()
+    selected_items_string.clear()
+    selected_items_string.append(main_item)
     for i in range(total_items-1):
         rand_item = random.choice(items)
-        random_actor = Actor(rand_item)
-        selected_items.append(random_actor)
-    random.shuffle(selected_items)
+        selected_items_string.append(rand_item)
+    random.shuffle(selected_items_string)
     gap = WIDTH/(total_items+1)
     for i in range(total_items):
-        curr_item = selected_items[i]
+        curr_item_string = selected_items_string[i]
+        curr_item = Actor(curr_item_string)
         curr_item.pos = (gap* (i+1)),40
+        selected_items.append(curr_item)
+    animate_actors()
+
+def animate_actors():
+    for items in selected_items:
+        animates = animate(items,duration=8,y = HEIGHT-20)
+        animations.append(animates)
+
+    
+
 def draw():
     screen.blit("bground", (0,0))
     for items in selected_items:
         items.draw()
+
+def on_mouse_down(pos):
+    global level
+    for i in range(len(selected_items)):
+        curr_item = selected_items[i]
+        if curr_item.collidepoint(pos):
+            if selected_items_string[i] == main_item:
+                level+=1
+                setup()
 
 setup()
 pgzrun.go()
