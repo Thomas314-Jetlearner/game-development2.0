@@ -17,6 +17,10 @@ main_item = "purple-star"
 selected_items = []
 selected_items_string = []
 animations = []
+
+gameover = False
+
+
 def setup():
     total_items = level*2
     selected_items.clear()
@@ -38,43 +42,37 @@ def animate_actors():
     for items in selected_items:
         animates = animate(items,duration=DURATION,y = HEIGHT-20)
         animations.append(animates)
+
 def stop_animations():
     for item in animations:
-        animations.stop()
-        animations = []
-    
-if level==3:
-    stop_animations()
-    screen.clear()
-    screen.draw.text("GAMEOVER", color = "blue",center = (300,300))
-    
+        item.stop()
+    animations.clear()
     
 
-
-
-
-
-
-# def update():
-#     for i in range(10):
-#         if curr_item.y>HEIGHT-20:
-#             screen.clear()
-#             screen.draw.text("GAMEOVER!!!", color = "white", center =(300,300))
-#             break
     
 
 def draw():
     screen.blit("bground", (0,0))
     for items in selected_items:
         items.draw()
+    if gameover:
+        
+        screen.draw.text("Gameover", color = "blue", fontsize = 40 , center = (200,200))
 
 def on_mouse_down(pos):
-    global level, DURATION
+    global level, DURATION, gameover
+    if level>3:
+        return
     for i in range(len(selected_items)):
         curr_item = selected_items[i]
         if curr_item.collidepoint(pos):
             if selected_items_string[i] == main_item:
                 level+=1
+                if level>3:
+                    stop_animations()
+                    selected_items.clear()
+                    gameover = True
+                    break
                 DURATION-=1
                 # score+=1
                 setup()
