@@ -8,7 +8,9 @@ WIDTH = 700
 HEIGHT = 600
 
 level = 1
-
+DURATION = 10
+score = 0
+# screen.draw.text(f"score:{score}",color="blue",center = (300,300))
 
 items=["bagimg","batteryimg","bottleimg","chipsimg","paperimg",]
 main_item = "purple-star"
@@ -34,9 +36,31 @@ def setup():
 
 def animate_actors():
     for items in selected_items:
-        animates = animate(items,duration=8,y = HEIGHT-20)
+        animates = animate(items,duration=DURATION,y = HEIGHT-20)
         animations.append(animates)
+def stop_animations():
+    for item in animations:
+        animations.stop()
+        animations = []
+    
+if level==3:
+    stop_animations()
+    screen.clear()
+    screen.draw.text("GAMEOVER", color = "blue",center = (300,300))
+    
+    
 
+
+
+
+
+
+# def update():
+#     for i in range(10):
+#         if curr_item.y>HEIGHT-20:
+#             screen.clear()
+#             screen.draw.text("GAMEOVER!!!", color = "white", center =(300,300))
+#             break
     
 
 def draw():
@@ -45,12 +69,14 @@ def draw():
         items.draw()
 
 def on_mouse_down(pos):
-    global level
+    global level, DURATION
     for i in range(len(selected_items)):
         curr_item = selected_items[i]
         if curr_item.collidepoint(pos):
             if selected_items_string[i] == main_item:
                 level+=1
+                DURATION-=1
+                # score+=1
                 setup()
 
 setup()
