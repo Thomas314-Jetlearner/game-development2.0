@@ -30,9 +30,7 @@ def draw():
             screen.draw.text(str(i+1),center= (sats[i].x+20,sats[i].y))
         for i in range(len(end_cords)):
             screen.draw.line(start_cords[i],end_cords[i] , color = "orange")
-    # else:
-    #     start_cords.clear()
-    #     end_cords.clear()
+   
        
     
 
