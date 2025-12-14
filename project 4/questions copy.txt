@@ -1,0 +1,10 @@
+Which element has the chemical symbol ‘O’? Gold|Oxygen|Osmium|Ozone|2
+Who painted the Mona Lisa? Vincent van Gogh|Pablo Picasso|Leonardo da Vinci|Claude Monet|3
+In what year did the Titanic sink? 1905|1912|1920|1898|2
+Which country is home to the kangaroo? South Africa|Australia|Brazil|India|2
+Which organ pumps blood through the body? Lungs|Liver|Heart|Kidney|3
+Which organ pumps blood through the body? Brain|Stomach|Heart|Lungs|3
+How many continents are there on Earth? 5|6|7|8|3
+Which gas do plants absorb from the atmosphere? Nitrogen|Carbon dioxide|Oxygen|Helium|2
+Which instrument measures atmospheric pressure? Thermometer|Barometer|Hygrometer|Anemometer|2
+Which planet is known as the Red Planet? Venus|Mars|Mercury|Jupiter|2
