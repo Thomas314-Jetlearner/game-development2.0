@@ -58,13 +58,28 @@ box7 = Rect((600,270), (150,320))
 def draw():
     screen.clear()
     screen.draw.filled_rect(box, "blue")
+    screen.draw.textbox(coca["question"],box,  color = "white")
+
     screen.draw.filled_rect(box2, "orange")
+    screen.draw.textbox(coca["options"][0],box2,  color = "white")
+
     screen.draw.filled_rect(box3, "orange")
+    screen.draw.textbox(coca["options"][1],box3,  color = "white")
+
     screen.draw.filled_rect(box4, "orange")
+    screen.draw.textbox(coca["options"][2],box4,  color = "white")
+
     screen.draw.filled_rect(box5, "orange")
+    screen.draw.textbox(coca["options"][3],box5,  color = "white")
+
     screen.draw.filled_rect(box6, "orange")
-    screen.draw.filled_rect(box7, "orange")
-    screen.draw.text(coca["question"], color = "white", pos = (120,150), fontsize = 25 )
+    # screen.draw.textbox(coca["question"],box7,  color = "white")
+
+    screen.draw.filled_rect(box7, "green")
+    screen.draw.textbox("skip",box7,  color = "white", angle= (90))
+    #
+
+    # screen.draw.text(coca["question"], color = "white", pos = (120,150), fontsize = 25 )
 
 
 def update():

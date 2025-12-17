@@ -12,11 +12,11 @@ with open("project 4/questions copy.txt", "r" ) as file:
 
     for l in data:
         ques = l.split("|")
-        print(ques)
-        ginger = {"questions":[0], "option":[1:5], "answer":[5]}
+        ginger = {"questions":ques[0], "option":ques[1:5], "answer":ques[5]}
         questions.append(ginger)
 
 powder = random.choice(questions)
+print(powder)
 
 
 
