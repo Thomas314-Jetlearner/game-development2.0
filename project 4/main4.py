@@ -48,6 +48,7 @@ with open("project 4\questions.txt", "r") as file:
 coca = random.choice(question_bank)
 
 
+
 box = Rect((10, 70), (550, 120))
 box2 = Rect((10,270), (250,120))
 box3 = Rect((10,470), (250,120))
@@ -77,12 +78,20 @@ def draw():
 
     screen.draw.filled_rect(box7, "green")
     screen.draw.textbox("skip",box7,  color = "white", angle= (90))
-    #
+    
 
     # screen.draw.text(coca["question"], color = "white", pos = (120,150), fontsize = 25 )
 
-
+options = [box2, box3, box4, box5]
 def update():
     pass
+
+def on_mouse_down(pos):
+    for i in range(options):
+        if options[i].collidepoint(pos):
+            coca = random.choice(question_bank)
+                
+
+
 
 pgzrun.go()
